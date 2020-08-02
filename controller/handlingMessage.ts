@@ -12,12 +12,15 @@ export const HandlingMessage = async (
         case "start":
             ctx.reply("I'm a babu of lordchou thanks for add me")    
             break;
+        case "mychatid":
+            ctx.reply(ctx.message?.chat.id.toString() || "")
+            break;    
         case "tesvideo":
             ctx.telegram.method("sendVideo", {
                 chat_id: ctx.message?.chat.id,
                 video: "<video link>"               
             })
-            break;  
+            break;      
         case "tesphoto":
             ctx.telegram.method("sendPhoto", {
                 chat_id: ctx.message?.chat.id,
@@ -30,6 +33,8 @@ export const HandlingMessage = async (
                 document: "<document link (like pdf,video or audio)>"
             })
             break;
+        default:
+            ctx.replyWithMarkdownV2(`I don't know the _${command(text)}_ command`)
         }
     }
 };
