@@ -4,7 +4,8 @@ export const logging = async(ctx: Telegram.Context<Record<string, unknown>>, nex
     let data = JSON.stringify({
         timestamp: Date(),
         username: ctx.message?.from?.username,
-        message : ctx.message?.text
+        message : ctx.message?.text,
+        chat_id: ctx.message?.chat.id
     })
     try {
         console.log(data);
